@@ -2,7 +2,6 @@ package com.company;
 
 
 import java.time.LocalDate;
-import java.util.Scanner;
 
 /**
  * @author Pavlov Vitaliy
