@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class HumanLifecycle {
 
     IHumanLifecycleObserver[] observers;
+    boolean gender;
 
     public HumanLifecycle(IHumanLifecycleObserver[] observers) {
         this.observers = observers;
@@ -21,15 +22,15 @@ public class HumanLifecycle {
         runBirth();
         runKindergarten();
         runSchool();
-        // в вуз
-        // создал семъю
-        // рождение детей
+        runUniversity();
+        runMarry();
+        runBirthChild();
         // смерть
     }
 
     private void runBirth() {
         LocalDate dateBirth = LocalDate.now();
-        boolean gender = Math.random() > 0.5;
+        gender = Math.random() > 0.5;
         double weight = 2.5 + Math.random() * 2.5;
 
         for (int i = 0; i < observers.length; i++) {
@@ -40,7 +41,7 @@ public class HumanLifecycle {
     private void runKindergarten() {
         int numberKindergarten = 1 + (int) (Math.random() * 100);
         int numberGroup = 1 + (int) (Math.random() * 10);
-        String nameEducator = "Ирина Игоревна";
+        String nameEducator = "Светлана Игоревна";
 
 
         for (int i = 0; i < observers.length; i++) {
@@ -49,45 +50,53 @@ public class HumanLifecycle {
     }
 
     private void runSchool() {
-        Scanner in = new Scanner(System.in);
         String[] nubersClass = {"1A", "1B", "1Г", "1Д"};
         int numberSchool = 1 + (int) (Math.random() * 200);
-        System.out.println("Введите имя учителя:");
-        String nameTeacher = in.nextLine();
+        String nameTeacher = "Ирана Николаевна";
         String numberClass = nubersClass[((int) Math.random() * nubersClass.length)];
-        in.close();
+
         for (int i = 0; i < observers.length; i++) {
             observers[i].onSchool(numberSchool, numberClass, nameTeacher);
         }
     }
 
     private void runUniversity() {
-        String nameUniversity;
-        String specialty;
+        String city = "Харьков";
+        String nameUniversity = "ХПИ";
+        String specialty = "экономика предприятия";
 
+
+        for (int i = 0; i < observers.length; i++) {
+            observers[i].onUniversity(city, nameUniversity, specialty);
+        }
     }
 
     private void runMarry() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Ввести имя супруги/супруга:");
-        String nameSpouse = in.nextLine();
-        int year = (int) (2021 + Math.random() * 50);
-        int month = (int) (1 + Math.random() * 30);
-        int day = (int) (1 + Math.random() * 29);
-        LocalDate date = LocalDate.of(year, month, day);
-        System.out.println("Ввести название ресторана:");
-        String nameRestaurant = in.nextLine();
-        in.close();
+        String nameSpouse = gender ? "Женя" : "Юля";
+        LocalDate date = LocalDate.of(2041, 7, 2);
+        String nameRestaurant = "Плакучая Ива";
+
+        for (int i = 0; i < observers.length; i++) {
+            observers[i].onMarry(date, nameSpouse, nameRestaurant, gender);
+        }
     }
 
     private void runBirthChild() {
-        // LocalDate dateBirth = this.date;
+        LocalDate dateBirth = LocalDate.of(2045, 6, 26);
         boolean gender = Math.random() > 0.5;
         double weight = 2.5 + Math.random() * 2.5;
+
+        for (int i = 0; i < observers.length; i++) {
+            observers[i].onBirthChiid(dateBirth, gender, weight);
+        }
     }
 
-    public void setDate(LocalDate date) {
-        //this.date = date;
+    private void runTheEnd() {
+        String end = "the end";
 
+        for (int i = 0; i < observers.length; i++) {
+            observers[i].onTheEnd(end);
+        }
     }
+
 }
