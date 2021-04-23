@@ -60,23 +60,21 @@ public class HumanLifecycle {
     }
 
     private void runUniversity() {
-        String city = "Харьков";
         String nameUniversity = "ХПИ";
         String specialty = "экономика предприятия";
 
 
         for (int i = 0; i < observers.length; i++) {
-            observers[i].onUniversity(city, nameUniversity, specialty);
+            observers[i].onUniversity( nameUniversity, specialty,this.gender);
         }
     }
 
     private void runMarry() {
         String nameSpouse = gender ? "Женя" : "Юля";
-        LocalDate date = LocalDate.of(2041, 7, 2);
         String nameRestaurant = "Плакучая Ива";
 
         for (int i = 0; i < observers.length; i++) {
-            observers[i].onMarry(date, nameSpouse, nameRestaurant, gender);
+            observers[i].onMarry( nameSpouse, nameRestaurant, gender);
         }
     }
 

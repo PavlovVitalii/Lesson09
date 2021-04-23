@@ -1,4 +1,6 @@
-package com.company;
+package com.company.observers;
+
+import com.company.IHumanLifecycleObserver;
 
 import java.time.LocalDate;
 
@@ -12,13 +14,15 @@ public class Mother implements IHumanLifecycleObserver {
     @Override
     public void onBirth(LocalDate date, boolean gender, double weight) {
         System.out.println(mother);
-        System.out.println("У нас " + (gender ? "родилась дочь." : "родился сын."
-                + "C весом " + weight + "кг"));
-        System.out.println("---------------------");
+        System.out.print("У нас " + (gender ? "родилась дочь." : "родился сын."
+                + "C весом "));
+        System.out.printf("%.2f кг.\n",weight);
+        System.out.println("---------------------------------------");
     }
 
     @Override
     public void onKindergarten(int numberKindergarten, int numberGroup, String nameEducator) {
+        System.out.println(mother);
         System.out.println("Неужели мы пошли в сад УРРА!!!!"
                 + "\nНаш воспитатель: " + nameEducator + "\nгрупа: " + numberGroup
                 + "\nСад № " + numberKindergarten);
@@ -27,6 +31,7 @@ public class Mother implements IHumanLifecycleObserver {
 
     @Override
     public void onSchool(int numberSchool, String numberClass, String nameTeacher) {
+        System.out.println(mother);
         System.out.println("Портфель купили, тетради купили к школе готовы."
                 + "\nНаша школа № " + numberSchool + "\nУчитель: " + nameTeacher
                 + "\nКласс: " + numberClass);
@@ -34,22 +39,26 @@ public class Mother implements IHumanLifecycleObserver {
     }
 
     @Override
-    public void onUniversity(String city, String nameUnivercity, String specialty) {
+    public void onUniversity( String nameUnivercity, String specialty,boolean gender) {
+        System.out.println(mother);
         System.out.println("Ура мы поступили в " + nameUnivercity);
         System.out.println("---------------------------------------");
 
     }
 
     @Override
-    public void onMarry(LocalDate date, String name, String nameRestaurant, boolean gender) {
+    public void onMarry( String name, String nameRestaurant, boolean gender) {
+        System.out.println(mother);
         System.out.println("Как быстро летит время.\n"
                 + (gender ? "Наша доч выходит за муж!" : "Наш сын женится"));
+        System.out.println("Они красивая пара!");
         System.out.println("---------------------------------------");
 
     }
 
     @Override
     public void onBirthChiid(LocalDate date, boolean gender, double weight) {
+        System.out.println(mother);
         System.out.println("Сегодня "
                 + date.toString()
                 + " один из самых счастливых дней!\n"
