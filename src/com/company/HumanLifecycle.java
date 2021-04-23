@@ -20,11 +20,14 @@ public class HumanLifecycle {
 
         runBirth();
         runKindergarten();
+        runPartyInKindergarten();
         runSchool();
+        runOlympiad();
         runUniversity();
+        runWork();
         runMarry();
         runBirthChild();
-        // смерть
+
     }
 
     private void runBirth() {
@@ -65,7 +68,7 @@ public class HumanLifecycle {
 
 
         for (int i = 0; i < observers.length; i++) {
-            observers[i].onUniversity( nameUniversity, specialty,this.gender);
+            observers[i].onUniversity(nameUniversity, specialty, this.gender);
         }
     }
 
@@ -74,7 +77,7 @@ public class HumanLifecycle {
         String nameRestaurant = "Плакучая Ива";
 
         for (int i = 0; i < observers.length; i++) {
-            observers[i].onMarry( nameSpouse, nameRestaurant, gender);
+            observers[i].onMarry(nameSpouse, nameRestaurant, gender);
         }
     }
 
@@ -88,8 +91,34 @@ public class HumanLifecycle {
         }
     }
 
+    private void runPartyInKindergarten() {
+        String holyday = "Новогодний утренник";
+
+        for (int i = 0; i < observers.length; i++) {
+            observers[i].onPartyInKindergarten(holyday, gender);
+        }
+    }
+
+    private void runOlympiad() {
+        boolean plase = Math.random() > 0.5;
+
+        for (int i = 0; i < observers.length; i++) {
+            observers[i].onOlympiad(plase, gender);
+        }
+    }
+
+    private void runWork() {
+        String nameCompany = "Google";
+        double salary = 2000.0;
+
+        for (int i = 0; i < observers.length; i++) {
+            observers[i].onWork(nameCompany, salary, gender);
+        }
+    }
+
     private void runTheEnd() {
         String end = "the end";
+        System.out.println("The end");
 
         for (int i = 0; i < observers.length; i++) {
             observers[i].onTheEnd(end);
