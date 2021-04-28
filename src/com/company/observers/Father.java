@@ -42,6 +42,7 @@ public class Father implements IHumanLifecycleObserver {
 
     @Override
     public void onOlympiad(boolean plase, boolean gender) {
+        System.out.println(father);
         System.out.print(gender ? "Наша дочь участвовала в олимпиаде по математеке и заняла " :
                 "Наш сын участвовал в олимпиаде по математеке и занял ");
         System.out.println(plase ? "1-ое " : "2-ое" + " место.");
