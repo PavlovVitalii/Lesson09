@@ -8,24 +8,73 @@ import java.time.LocalDate;
 
 public interface IHumanLifecycleObserver {
 
-    void onBirth(LocalDate date, boolean gender, double weight);
+    class Birth {
 
-    void onKindergarten(int numberKindergarten, int numberGroup, String nameEducator);
+        LocalDate date;
+        boolean gender;
+        double weight;
 
-    void onPartyInKindergarten(String holiday, boolean gender);
+    }
 
-    void onOlympiad(boolean plase, boolean gender);
+    class Kindergarten {
+        int numberKindergarten;
+        int numberGroup;
+        String nameEducator;
 
-    void onSchool(int numberSchool, String numberClass, String nameTeacher);
 
-    void onUniversity(String nameUnivercity, String specialty, boolean gender);
+    }
 
-    void onWork(String nameCompany, double salary, boolean gender);
+    class School {
+        int numberSchool;
 
-    void onMarry(String name, String nameRestaurant, boolean gender);
+        String numberClass;
 
-    void onBirthChiid(LocalDate date, boolean gender, double weight);
+        String nameTeacher;
 
-    void onTheEnd(String end);
+
+    }
+
+    class University {
+        String nameUnivercity;
+        String specialty;
+        boolean gender;
+
+    }
+
+    class Work {
+        String nameCompany;
+        double salary;
+        boolean gender;
+
+
+    }
+
+    class Marry {
+        String name;
+        String nameRestaurant;
+        boolean gender;
+
+
+    }
+
+    void onBirth(Birth birth);
+
+    void onKindergarten(Kindergarten kindergarten);
+
+    void onPartyInKindergarten();
+
+    void onOlympiad();
+
+    void onSchool(School school);
+
+    void onUniversity(University university);
+
+    void onWork(Work work);
+
+    void onMarry(Marry marry);
+
+    void onBirthChiid(Birth birth);
+
+    void onTheEnd();
 
 }
